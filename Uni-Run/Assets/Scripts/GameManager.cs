@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 // 게임 오버 상태를 표현하고, 게임 점수와 UI를 관리하는 게임 매니저
 // 씬에는 단 하나의 게임 매니저만 존재할 수 있다.
@@ -10,8 +11,10 @@ public class GameManager : MonoBehaviour {
     public bool isGameover = false; // 게임 오버 상태
     public Text scoreText; // 점수를 출력할 UI 텍스트
     public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
+    //public TMP_Text HpText; // TMPro 쓴 tmp 텍스ㅡ hp 를 보여주는 텍스트 
 
     private int score = 0; // 게임 점수
+   // private int hp = 3; // hp 체력
 
     // 게임 시작과 동시에 싱글톤을 구성
     void Awake() {
@@ -49,11 +52,22 @@ public class GameManager : MonoBehaviour {
             score += newScore;
             scoreText.text = string.Format("Score : {0}", score);
         }
+        
     }
+    
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
     public void OnPlayerDead() 
     {
+
+        //hp -= 1;
+        //HpText.text = string.Format("Hp : {0}", hp);
+        //if (hp <= 0)
+        //{
+        //    isGameover = true;
+        //    gameoverUI.SetActive(true);
+        //}
+        
         isGameover = true;
         gameoverUI.SetActive(true);
     }
